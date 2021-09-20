@@ -3,21 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content='width=device-width, initial-scale=1'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
     <title>CV Vinskovska Kateryna</title>
 </head>
 <body>
     <div class="page">
+        <header class="header">
+            <nav class="nav">
+
+                 <button class="burger" type="button" id="navToggle">
+                     <span class="burger__item">Burger</span> 
+                </button>
+
+                <ul class="nav__inner ">
+                    <li class="nav__item"><a class="nav__link" href="#expireance">Experience</a></li>
+                    <li class="nav__item"><a class="nav__link" href="#skills">Skills</a></li>
+                    <li class="nav__item"><a class="nav__link" href="#code">Code examples</a></li>
+                    <li class="nav__item"><a class="nav__link" href="#contacts">Contacts</a></li>
+                    <li class="nav__item"><a class="nav__link" href="#education">Education</a></li>
+                    <li class="nav__item"><a class="nav__link" href="#languages">Languages</a></li>
+                </ul>
+                <h1 class="content__name">Kateryna Vinskovska</h1>
+            </nav>
+        </header>
+
         <div class="container">
             <aside class="sidebar">
                 <figure class="sidebar__img"> 
                     <img class="photo" src="img/photo.jpg" alt="photo">
                 </figure>
-                <div class="sidebar__item sidebar__item--dark">
+                <div class="sidebar__item sidebar__item--dark sidebar__summary">
                     <h2 class="sidebar__title">Summary</h2>
                     <div class="sidebar__container">
                         <div class="sidebar__content">
@@ -27,29 +50,29 @@
                     </div>
                 </div>
 
-                <div class="sidebar__item sidebar__item--light">
-                    <h2 class="sidebar__title">Contact</h2>
+                <div class="sidebar__item sidebar__item--light sidebar__contacts" id="contacts">
+                    <h2 class="sidebar__title">Contacts</h2>
                     <ul class="contact__list">
-                        <li class="sidebar__container">
+                        <li class="sidebar__container contact__item">
                             <h3 class="sidebar__subtitle">Phone</h3>
                             <div class="sidebar__content">+38 (093)-285 - 19 -48</div>
                         </li>
-                        <li class="sidebar__container">
+                        <li class="sidebar__container contact__item">
                             <h3 class="sidebar__subtitle">Email</h3>
                             <div class="sidebar__content">kostiukkaterina@gmail.com</div>
                         </li>
-                        <li class="sidebar__container">
+                        <li class="sidebar__container contact__item">
                             <h3 class="sidebar__subtitle">Telegram</h3>
                             <div class="sidebar__content">@kateryna_171</div>
                         </li>
-                        <li class="sidebar__container">
+                        <li class="sidebar__container contact__item">
                             <h3 class="sidebar__subtitle">Location</h3>
                             <div class="sidebar__content">Kyiv, Ukraine</div>
                         </li>
                     </ul> 
                 </div>
                 
-                <div class="sidebar__item sidebar__item--dark">
+                <div class="sidebar__item sidebar__item--dark" id="education">
                     <h2 class="sidebar__title">Education</h2>
                     <div class="sidebar__container">
                         <div class="sidebar__content">
@@ -60,7 +83,7 @@
                     </div>
                 </div>
 
-                <div class="sidebar__item sidebar__item--light">
+                <div class="sidebar__item sidebar__item--light sidebar__language" id="languages">
                     <h2 class="sidebar__title">Languages</h2>
                     <div class="sidebar__container">
                         <div class="sidebar__content">
@@ -73,9 +96,9 @@
             </aside>
 
             <main class="content">
-                <h1 class="content__name">Kateryna Vinskovska</h1>
+                
 
-                <section class="experience">
+                <section class="experience" id="expireance">
                     <h2 class="content__title">Experience</h2>
                     <div class="experience__item">
                         <table>
@@ -111,7 +134,7 @@
                     </div>
                 </section>
 
-                <section class="skills">
+                <section class="skills" id="skills">
                     <h2 class="content__title">Skills</h2>
                     <ul class="skills__inner">
                         <li class="skills__item">
@@ -196,54 +219,70 @@
                     </ul>
                 </section>
 
-                <section class="code">  
+                <section class="code__section" id="code">  
                     <h2 class="content__title">Code examples</h2>
                     <div class="content__text code__text">
-                        <pre><code>
-                // Timer
-                const deadline = '2021-07-20';
-                function getTimeRemaining(endtime) {
-                    const t = Date.parse(deadline) - Date.parse(new Date()),
-                            days = Math.floor(t/ (1000*60*60*24)),
-                            hours = Math.floor(t / (1000*60*60) % 24),
-                            minutes = Math.floor(t / (1000*60) % 60),
-                            seconds = Math.floor(t / 1000 % 60);
-                    return {
-                        'total': t,
-                        'days': days,
-                        'hours': hours,
-                        'minutes': minutes,
-                        'seconds': seconds
-                    };
-                }
-                function getZero(num) {
-                    if (num >=0 && num &lt;= 10) {
-                        return  `0${num}`;
-                    } else {
-                        return num;
-                    }
-                }
-                function setClock(selector, endtime) {
-                    const timer = document.querySelector(selector),
-                            days = document.querySelector('#days'),
-                            hours = document.querySelector('#hours'),
-                            minutes = document.querySelector('#minutes'),
-                            seconds = document.querySelector('#seconds'),
-                            timeInterval = setInterval(updateClock,1000);
-                    updateClock();
-                    function updateClock() {
-                        const t = getTimeRemaining(endtime);
-                        days.innerHTML = getZero(t.days);
-                        hours.innerHTML = getZero(t.hours);
-                        minutes.innerHTML = getZero(t.minutes);
-                        seconds.innerHTML = getZero(t.seconds);
-                        if (t.total &lt;= 0) {
-                            clearInterval(timeInterval);
-                        }
-                    }
-                }
-                setClock('.timer', deadline);
-                        </code></pre>
+
+                        <div class="code__projects">
+                            <a class="mole project__img" target="_blank" href="https://rolling-scopes-school.github.io/ket1911-JSFEPRESCHOOL/whack-a-mole/">
+                                <div class="mask"></div>
+                                <h4 class="project__title whoke-title">Whack-A-Mole</h4>
+                                <img src="img/mole.png" alt="mole">
+                            </a>
+                            <a class="museum project__img" target="_blank" href="https://rolling-scopes-school.github.io/ket1911-JSFEPRESCHOOL/museum/">
+                                <h4 class="project__title">Museum</h4>
+                                <div class="mask"></div>
+                                <img src="img/museum.png" alt="museum">
+                            </a>
+                        </div>
+                        <div class="code__inner">
+                            <pre><code class="code" >
+// Timer
+const deadline = '2021-07-20';
+function getTimeRemaining(endtime) {
+const t = Date.parse(deadline) - Date.parse(new Date()),
+        days = Math.floor(t/ (1000*60*60*24)),
+        hours = Math.floor(t / (1000*60*60) % 24),
+        minutes = Math.floor(t / (1000*60) % 60),
+        seconds = Math.floor(t / 1000 % 60);
+return {
+    'total': t,
+    'days': days,
+    'hours': hours,
+    'minutes': minutes,
+    'seconds': seconds
+};
+}
+function getZero(num) {
+if (num >=0 && num &lt;= 10) {
+    return  `0${num}`;
+} else {
+    return num;
+}
+}
+function setClock(selector, endtime) {
+const timer = document.querySelector(selector),
+        days = document.querySelector('#days'),
+        hours = document.querySelector('#hours'),
+        minutes = document.querySelector('#minutes'),
+        seconds = document.querySelector('#seconds'),
+        timeInterval = setInterval(updateClock,1000);
+updateClock();
+function updateClock() {
+    const t = getTimeRemaining(endtime);
+    days.innerHTML = getZero(t.days);
+    hours.innerHTML = getZero(t.hours);
+    minutes.innerHTML = getZero(t.minutes);
+    seconds.innerHTML = getZero(t.seconds);
+    if (t.total &lt;= 0) {
+        clearInterval(timeInterval);
+    }
+}
+}
+setClock('.timer', deadline);
+                                        </code></pre>
+                        </div>
+                        
                     </div>
                 </section>
 
@@ -251,20 +290,23 @@
         </div>
 
         <footer class="footer">
-            <div class="footer__date">&copy;2021</div>
+            <div class="footer__container">
+                <div class="footer__date">&copy;2021</div>
 
-            <a class="footer__link" href="https://github.com/Ket1911/">My GitHub</a>
+                <a class="footer__link" href="https://github.com/Ket1911/">My GitHub</a>
 
-            <a class="footer__link" href="https://rs.school/js/">RS School</a>
+                <a class="footer__link" href="https://rs.school/js/">RS School</a>
 
-            <a class="logo" href="https://rs.school/js/">
+                <a class="logo" href="https://rs.school/js/">
                 <img class="icon" src="img/rs_school_js.svg" alt="rss">
-            </a>
+                </a>
 
+            </div>
+            
         </footer>
 
     </div>
-
+<script src="script.js"></script>
     
 </body>
 </html>
